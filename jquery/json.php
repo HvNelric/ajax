@@ -16,12 +16,12 @@
             <div class="col-12 mt-5">
                 <form class="" id="qui">
                     <div class="form-group">
-                        <label>Nom</label>
-                        <input class="form-control" type="text" name="nom" id="nom">
-                    </div>
-                    <div class="form-group">
                         <label>Prénom</label>
                         <input class="form-control" type="text" name="prenom" id="prenom">
+                    </div>
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input class="form-control" type="text" name="nom" id="nom">
                     </div>
                     <div class="form-group">
                         <label >Methode POST ou GET</label>
@@ -34,12 +34,13 @@
                         <button class="btn btn-info" type="submit">Envoyer</button>
                     </div>
                 </form>
+                <div id="reponse" style="display:none">
+                    <p>Données recus en <span id="recu"></span></p>
+                    <p>Bonjour <span id="nom-complet"></span></p>
+                </div>
             </div>
         </div>
-        <div id="reponse" style="display:none">
-            <p>Données recus en <span id="recu"></span></p>
-            <p>Bonjour <span id="nom-complet"></span></p>
-        </div>
+        <div id="reponse"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
@@ -52,20 +53,25 @@
                 if(method == 'POST') {
                     //raccourci pour $.ajax() avec method: POST
                     $.post(
-                        '../hello.php', // fichier appelé
+                        '../hello-json.php', // fichier appelé
                         $(this).serialize(), // donnés envoyées
                         function (response) { // success
-                            $('#reponse').html(response);
-                        }
-
+                            $('#recu').html(response.methode);
+                            $('#nom-complet').text(response.nom + ' ' + response.pseudo);
+                            $('#reponse').fadeIn();
+                        },
+                        'json' // type de données
                     );
                 } else {
                     $.get(
-                        '../hello.php', // fichier appelé
+                        '../hello-json.php', // fichier appelé
                         $(this).serialize(), // donnés envoyées
                         function (response) { // success
-                            $('#reponse').html(response);
-                        }
+                            $('#recu').text(response.methode);
+                            $('#nom-complet').text(response.nom + ' ' + response.pseudo);
+                            $('#reponse').fadeIn();
+                        },
+                        'json'
                     );
                 }
             });
