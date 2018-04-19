@@ -95,12 +95,7 @@ include __DIR__ . '/../layout/top.php';
 			</td>
 			<td><?= dateFr($commande['date_statut']); ?></td>
 			<td>
-				<?php
-					$query = 'SELECT id FROM detail_commande';
-					$stmt = $pdo->query($query);
-					$dcommande = $stmt->fetch();
-				?>
-				<button id="detail-commande" class="btn btn-outline-info" type="button" data-id="<?= $dcommande['id'] ?>" >Voir détails</button>
+				<button id="detail-commande" class="btn btn-outline-info" type="button" data-id="<?= $commande['id'] ?>" >Voir détails</button>
 			</td>
 		</tr>
 	<?php
@@ -115,15 +110,19 @@ include __DIR__ . '/../layout/top.php';
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body bg-info text-white">
-        
+      <div class="container-fluid">
+      	<div class="row">
+      		<div class="modal-body bg-info text-white">
+		        
+		    </div>
+      	</div>
       </div>
     </div>
   </div>
 </div>
 
 <?php
-$javascripts = ['admin-produits.js'];
+$javascripts = ['admin-commandes.js'];
 include __DIR__ . '/../layout/bottom.php';
 ?>
 
