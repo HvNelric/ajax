@@ -95,7 +95,7 @@ include __DIR__ . '/../layout/top.php';
 			</td>
 			<td><?= dateFr($commande['date_statut']); ?></td>
 			<td>
-				<button id="detail-commande" class="btn btn-outline-info" type="button" data-id="<?= $commande['id'] ?>" >Voir détails</button>
+				<button class="btn btn-outline-info detail-commande" type="button" data-id="<?= $commande['id'] ?>" >Voir détails</button>
 			</td>
 		</tr>
 	<?php
@@ -106,6 +106,7 @@ include __DIR__ . '/../layout/top.php';
   <div class="modal-dialog-centered modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+	  	<span class="text-info"><strong>Voici vos produits sélectionnés</trong></span>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

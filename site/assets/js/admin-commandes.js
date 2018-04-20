@@ -1,6 +1,6 @@
 $(function() {
 
-    $('#detail-commande').click(function(e) {
+    $('.detail-commande').click(function(e) {
         $.get(
             '../ajax/detail-commande.php',
             'id=' + $(this).data('id'),
